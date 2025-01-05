@@ -9,7 +9,6 @@ import {
 } from "next-sanity";
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
-
 import AlertBanner from "./alert-banner";
 import PortableText from "./portable-text";
 
@@ -18,6 +17,8 @@ import { sanityFetch } from "@/sanity/lib/fetch";
 import { settingsQuery } from "@/sanity/lib/queries";
 import { resolveOpenGraphImage } from "@/sanity/lib/utils";
 import Link from "next/link";
+import CommentSec from "./commentsec/page";
+import Footer from "./Footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({
@@ -57,9 +58,9 @@ const inter = Inter({
 });
 
 export default async function RootLayout({
-  children,
-}: {
+  children}: {
   children: React.ReactNode;
+  
 }) {
   const data = await sanityFetch({ query: settingsQuery });
   const footer = data?.footer || [];
@@ -69,6 +70,7 @@ export default async function RootLayout({
     <html lang="en" className={`${inter.variable} bg-white text-black`}>
       <body>
         <section className="min-h-screen">
+          <AlertBanner/>
           {isDraftMode && <AlertBanner />}
           <main>{children}</main>
           <footer className="bg-accent-1 border-accent-2 border-t">
@@ -90,20 +92,23 @@ export default async function RootLayout({
                     >
                       back to home
                     </Link>
-                    <a
+                { /*   <a
                       href="https://github.com/vercel/next.js/tree/canary/examples/cms-sanity"
                       className="mx-3 font-bold hover:underline"
                     >
                       View on GitHub
-                    </a>
+                    </a>  */}
                   </div>
                 </div>
               )}
-            </div>
+            </div> 
           </footer>
         </section>
         {isDraftMode && <VisualEditing />}
         <SpeedInsights />
+<Slug/>        
+        <CommentSec/>
+        <Footer/>
       </body>
     </html>
   );
