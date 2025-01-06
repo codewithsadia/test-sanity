@@ -20,6 +20,7 @@ import Link from "next/link";
 import CommentSec from "./commentsec/page";
 import Footer from "./Footer";
 
+
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await sanityFetch({
     query: settingsQuery,
@@ -106,7 +107,7 @@ export default async function RootLayout({
         </section>
         {isDraftMode && <VisualEditing />}
         <SpeedInsights />
-<Slug/>        
+                
         <CommentSec/>
         <Footer/>
       </body>

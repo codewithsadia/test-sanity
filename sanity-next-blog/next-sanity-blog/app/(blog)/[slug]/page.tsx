@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import './page.css';
 import { useState } from 'react';
 
 type Blog = {
@@ -98,9 +99,9 @@ export default function BlogPost({ blog }: { blog: Blog | null }) {
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
           placeholder="Add a comment..."
-          style={{ width: '100%', height: '80px', marginBottom: '10px' }}
+          className="textarea"
         />
-        <button type="submit" style={{ padding: '10px 20px' }}>
+        <button type="submit" className="submit-button">
           Submit
         </button>
       </form>
