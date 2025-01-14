@@ -1,6 +1,18 @@
+"use client"
 import { useRouter } from 'next/router';
-import './page.css';
 import { useState } from 'react';
+
+export default async function BlogPage({ params }: BlogProps) {
+  const { slug } = params;
+  const blogData = await getBlogData(slug);
+
+  // Define your blogs object with type `Blogs` if needed
+  // For example: const blogs: Blogs = ...
+
+  return (
+    // Your JSX code here
+  );
+}
 
 type Blog = {
   title: string;

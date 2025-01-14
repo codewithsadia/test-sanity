@@ -103,6 +103,7 @@ export default async function RootLayout({
                 </div>
               )}
             </div> 
+            <
           </footer>
         </section>
         {isDraftMode && <VisualEditing />}

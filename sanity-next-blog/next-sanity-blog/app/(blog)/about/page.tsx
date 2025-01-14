@@ -1,24 +1,26 @@
 import React from 'react';
+import image from '../pulic/image.png';
 import imageUrlBuilder from '@sanity/image-url';
 import Image from 'next/image';
 
-
 interface AboutProps {
   image: any;
+  src:string 
+  alt:string
 }
 
 const About: React.FC<AboutProps> = ({ image }) => {
   const builder = imageUrlBuilder({
-    projectId: 'yourProjectId', // Replace with your Sanity project ID
-    dataset: 'yourDataset', // Replace with your Sanity dataset
+    projectId: '8flt191u', // Replace with your Sanity project ID
+    dataset: 'production', // Replace with your Sanity dataset
   });
 
-  function urlFor(image: any) {
-    return builder.image(image);
+  function urlFor(source: any) {
+    return builder.image(source);
   }
 
   return (
-    <div id="about" className="container mx-auto px-10 py-16 text-pink-600">
+    <div id="about" className="container mx-auto px-10 py-16  text-pink-600">
       {/* Heading */}
       <h2 className="text-4xl md:text-5xl text-center font-bold text-black mb-6">
         About Me!
@@ -27,7 +29,7 @@ const About: React.FC<AboutProps> = ({ image }) => {
       {/* Image Section */}
       <div className="flex justify-center mb-6">
         <Image
-          src={urlFor(image).width(200).height(200).url()} // Sanity image URL
+          src={image} // Use the Sanity image URL
           alt="Sadia Imran"
           width={200}
           height={200}
